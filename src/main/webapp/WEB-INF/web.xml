@@ -11,10 +11,15 @@
 	<servlet>
 		<servlet-name>LoginControllerServlet</servlet-name>
 		<servlet-class>com.training.LoginController</servlet-class>
+		 <init-param> 
+			<param-name>driver</param-name> 
+			<param-value>sun.jdbc.odbc.JdbcOdbcDriver</param-value> 
+		</init-param> 
+		
 	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>LoginControllerServlet</servlet-name>
-		<url-pattern>/LoginController</url-pattern>
+		<url-pattern>/Web_LoginController</url-pattern>
 	</servlet-mapping>
 </web-app>
