@@ -7,6 +7,11 @@
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
 
+	<context-param> 
+		<param-name>dname</param-name> 
+		<param-value>sun.jdbc.odbc.JdbcOdbcDriver</param-value> 
+	</context-param>
+
 
 	<servlet>
 		<servlet-name>LoginControllerServlet</servlet-name>

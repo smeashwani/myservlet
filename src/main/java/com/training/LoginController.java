@@ -6,6 +6,7 @@ import java.util.Enumeration;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
@@ -43,6 +44,7 @@ public class LoginController extends HttpServlet {
 			out.print("count" + count + "</br>");
 			
 			extractConfigInfo(out);
+			extractContextInfo(out);
 
 		}else {
 			
@@ -63,5 +65,11 @@ public class LoginController extends HttpServlet {
 		out.print("<br>Name: "+str); 
 		out.print(" value: "+config.getInitParameter(str)); 
 		}
+	}
+	
+	private void extractContextInfo(PrintWriter out) {
+		ServletContext context=getServletContext();
+		String driverName=context.getInitParameter("dname");
+		out.println("<br>driver name is="+driverName);
 	}
 }
