@@ -9,6 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class FirstServlet
@@ -21,8 +22,8 @@ public class SecondServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String txtFieldB = request.getParameter("textFieldB");
 		response.setContentType("text/html");
-		Cookie cookie = new Cookie("txtFieldB", txtFieldB);
-		response.addCookie(cookie);
+		HttpSession session = request.getSession();
+		session.setAttribute("textFieldB", txtFieldB);
 		
 		PrintWriter out = response.getWriter();
 		out.print("<form action=\"FinalServlet\">\r\n"
