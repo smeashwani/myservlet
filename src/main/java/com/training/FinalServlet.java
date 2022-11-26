@@ -22,12 +22,19 @@ public class FinalServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		HttpSession session = request.getSession();
-		session.setMaxInactiveInterval(30);
-		String a =(String)session.getAttribute("textFieldA");
-		String b =(String)session.getAttribute("textFieldB");
-		out.print("A: " + a + "</br>");
-		out.print("B: " + b + "</br>");
-		out.print("C: " + request.getParameter("textFieldC") + "</br>");
+		String txtFieldA = request.getParameter("textFieldA");
+		String txtFieldB = request.getParameter("textFieldB");
+		String txtFieldC = request.getParameter("textFieldC");
+		String txtFieldD = request.getParameter("textFieldD");
+		String txtFieldE = request.getParameter("textFieldE");
+		String txtFieldF = request.getParameter("textFieldF");
+		
+		
+		out.print("A: " + txtFieldA + "</br>");
+		out.print("B: " + txtFieldB + "</br>");
+		out.print("C: " + txtFieldC + "</br>");
+		out.print("D: " + txtFieldD + "</br>");
+		out.print("E: " + txtFieldE + "</br>");
+		out.print("F: " + txtFieldF + "</br>");
 	}
 }
