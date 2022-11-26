@@ -23,7 +23,8 @@ public class FinalServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		session.setMaxInactiveInterval(30);
+		session.setMaxInactiveInterval(30); // wait to 30 sec to see the expired values
+		//session.invalidate();
 		String a =(String)session.getAttribute("textFieldA");
 		String b =(String)session.getAttribute("textFieldB");
 		out.print("A: " + a + "</br>");

@@ -22,7 +22,7 @@ public class SecondServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String txtFieldB = request.getParameter("textFieldB");
 		response.setContentType("text/html");
-		HttpSession session = request.getSession();
+		HttpSession session = request.getSession(false);
 		session.setAttribute("textFieldB", txtFieldB);
 		
 		PrintWriter out = response.getWriter();
