@@ -21,12 +21,16 @@ public class FirstServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		String txtFieldA = request.getParameter("textFieldA");
+		String txtFieldB = request.getParameter("textFieldB");
 		PrintWriter out = response.getWriter();
-		Cookie cookie = new Cookie("txtFieldA", txtFieldA);
-		response.addCookie(cookie);
+		Cookie cookieA = new Cookie("txtFieldA", txtFieldA);
+	//	cookieA.setMaxAge(60*60*24*5);
+		Cookie cookieB = new Cookie("txtFieldB", txtFieldB);
+		response.addCookie(cookieA);
+		response.addCookie(cookieB);
 		
 		out.print("<form action=\"SecondServlet\">\r\n"
-				+ "		Enter B: <input type=\"text\" name=\"textFieldB\" /></br>\r\n"
+				+ "		Enter C: <input type=\"text\" name=\"textFieldC\" /></br>\r\n"
 				+ "		<input type=\"submit\">\r\n"
 				+ "	</form>");
 		

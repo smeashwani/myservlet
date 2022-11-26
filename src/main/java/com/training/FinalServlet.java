@@ -23,6 +23,7 @@ public class FinalServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		String a = "";
 		String b = "";
+		String c = "";
 		Cookie[] cookies = request.getCookies();
 		for (Cookie cookie : cookies) {
 			if(cookie.getName().equals("txtFieldA")) {
@@ -31,11 +32,15 @@ public class FinalServlet extends HttpServlet {
 			if(cookie.getName().equals("txtFieldB")) {
 				b= cookie.getValue();
 			}
+			if(cookie.getName().equals("txtFieldC")) {
+				c= cookie.getValue();
+			}
 		}
 		
 		out.print("A: " + a + "</br>");
 		out.print("B: " + b + "</br>");
-		out.print("C: " + request.getParameter("textFieldC") + "</br>");
+		out.print("c: " + c + "</br>");
+		out.print("D: " + request.getParameter("textFieldD") + "</br>");
 		
 	}
 
