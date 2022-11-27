@@ -26,6 +26,7 @@ public class HelloServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		out.print("A="+txtFieldA);
 		out.print("B="+txtFieldB);
+		System.out.println("servlet output sending");
 	}
 
 }

@@ -23,6 +23,7 @@ public class HelloServletFilter implements Filter {
 		resp.sendRedirect("index.html");
 	}else {
 		filter.doFilter(req, res);
+		System.out.println("response from Filter 1");
 	}
 	}
 
