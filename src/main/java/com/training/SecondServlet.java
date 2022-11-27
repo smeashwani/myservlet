@@ -3,11 +3,13 @@ package com.training;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class FirstServlet
@@ -18,18 +20,15 @@ public class SecondServlet extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String txtFieldA = request.getParameter("textFieldA");
-		String txtFieldB = request.getParameter("textFieldB");
 		response.setContentType("text/html");
-		
 		PrintWriter out = response.getWriter();
-		out.print("<form action=\"FinalServlet\">\r\n"
-				+ "		<input type=\"hidden\" name=\"textFieldA\" value=" +txtFieldA +">"
-				+ "		<input type=\"hidden\" name=\"textFieldB\" value=" +txtFieldB +">"
-				+ "		Enter C: <input type=\"text\" name=\"textFieldC\" /></br>\r\n"
-				+ "		<input type=\"submit\">\r\n"
-				+ "	</form>");
-		
+		HttpSession session = request.getSession();
+		ServletContext application = getServletContext();
+		out.print("request :" + (String) request.getAttribute("txtFieldA"));
+		out.print("</br>session :" + (String) session.getAttribute("txtFieldA"));
+		out.print("</br> application :" + (String) application.getAttribute("txtFieldA"));
+		String str = "<a href='%s'> Final Servlet </a>";
+		out.print(str.format(str, "FinalServlet"));
 	}
 
 

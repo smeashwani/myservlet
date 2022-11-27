@@ -3,11 +3,13 @@ package com.training;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class FirstServlet
@@ -20,13 +22,18 @@ public class FirstServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		String txtFieldA = request.getParameter("textFieldA");
-		PrintWriter out = response.getWriter();
+		HttpSession session = request.getSession();
+		ServletContext application = getServletContext();
+		// set in request scope
+		request.setAttribute("txtFieldA", (String) txtFieldA);
+		// set in session scope
+		session.setAttribute("txtFieldA",(String)  txtFieldA);
+		// set in application scope
+		application.setAttribute("txtFieldA",(String)  txtFieldA);
 		
-		out.print("<form action=\"SecondServlet\">\r\n"
-				+ "		<input type=\"hidden\" name=\"textFieldA\" value=" +txtFieldA +">"
-				+ "		Enter B: <input type=\"text\" name=\"textFieldB\" /></br>\r\n"
-				+ "		<input type=\"submit\">\r\n"
-				+ "	</form>");
+		PrintWriter out = response.getWriter();
+		String str = "All Values has been set in attibute </br><a href='%s'> Second Servlet </a>";
+		out.print(str.format(str, "SecondServlet"));
 		
 	}
 
