@@ -1,0 +1,7 @@
+
+\target
+*.class
+*.properties
+*.lst
+*.prefs
+.settings/
