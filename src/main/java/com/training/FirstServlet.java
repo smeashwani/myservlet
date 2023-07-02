@@ -3,12 +3,12 @@ package com.training;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class FirstServlet
@@ -24,15 +24,17 @@ public class FirstServlet extends HttpServlet {
 		String txtFieldB = request.getParameter("textFieldB");
 		PrintWriter out = response.getWriter();
 		Cookie cookieA = new Cookie("txtFieldA", txtFieldA);
-	//	cookieA.setMaxAge(60*60*24*5);
+		cookieA.setMaxAge(60*60*24*5);
 		Cookie cookieB = new Cookie("txtFieldB", txtFieldB);
 		response.addCookie(cookieA);
 		response.addCookie(cookieB);
-		
-		out.print("<form action=\"SecondServlet\">\r\n"
-				+ "		Enter C: <input type=\"text\" name=\"textFieldC\" /></br>\r\n"
-				+ "		<input type=\"submit\">\r\n"
-				+ "	</form>");
+		String res ="""
+				<form action="SecondServlet">
+				Enter C: <input type="text" name="textFieldC" /></br>
+				<input type="submit">
+				</form>
+				""";
+		out.print(res);
 		
 	}
 
