@@ -23,16 +23,15 @@ public class FirstServlet extends HttpServlet {
 		String txtFieldA = request.getParameter("textFieldA");
 		String txtFieldB = request.getParameter("textFieldB");
 		PrintWriter out = response.getWriter();
-		HttpSession session = request.getSession();
-		session.setAttribute("textFieldA", txtFieldA);
 		
-		String res  = "<form action=\"SecondServlet\">\r\n"
-				+ "		<input type=\"hidden\" name=\"textFieldA\" value=\"%s\" /></br>\r\n"
-				+ "		<input type=\"hidden\" name=\"textFieldB\" value=\"%s\"/></br>\r\n"
-				+ "		Enter c: <input type=\"text\" name=\"textFieldC\" /></br>\r\n"
-				+ "		Enter d: <input type=\"text\" name=\"textFieldD\" /></br>\r\n"
-				+ "		<input type=\"submit\">\r\n"
-				+ "	</form>";
+		String res  = """
+				<form action="SecondServlet">
+				<input type="hidden" name="textFieldA" value="%s" />
+				<input type="hidden" name="textFieldB" value="%s"/>
+				Enter c: <input type="text" name="textFieldC" /></br>
+				Enter d: <input type="text" name="textFieldD" /></br>
+				<input type="submit">
+				</form>""";
 		
 		out.print(String.format(res,txtFieldA, txtFieldB));
 		

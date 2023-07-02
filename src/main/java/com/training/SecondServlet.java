@@ -25,15 +25,17 @@ public class SecondServlet extends HttpServlet {
 		String txtFieldD = request.getParameter("textFieldD");
 		
 		PrintWriter out = response.getWriter();
-		String res = "<form action=\"FinalServlet\">\r\n"
-				+ "		<input type=\"hidden\" name=\"textFieldA\" value=\"%s\"/></br>\r\n"
-				+ "		<input type=\"hidden\" name=\"textFieldB\" value=\"%s\"/></br>\r\n"
-				+ "		<input type=\"hidden\" name=\"textFieldC\" value=\"%s\"/></br>\r\n"
-				+ "		<input type=\"hidden\" name=\"textFieldD\" value=\"%s\"/></br>\r\n"
-				+ "		Enter E: <input type=\"text\" name=\"textFieldE\" /></br>\r\n"
-				+ "		Enter F: <input type=\"text\" name=\"textFieldF\" /></br>\r\n"
-				+ "		<input type=\"submit\">\r\n"
-				+ "	</form>";
+		String res =""" 
+				<form action="FinalServlet">
+				<input type="hidden" name="textFieldA" value="%s"/>
+				<input type="hidden" name="textFieldB" value="%s"/>
+				<input type="hidden" name="textFieldC" value="%s"/>
+				<input type="hidden" name="textFieldD" value="%s"/>
+				Enter E: <input type="text" name="textFieldE" /> </br>
+				Enter F: <input type="text" name="textFieldF" /> </br>
+				<input type="submit">
+				</form>
+				""";
 		
 		out.print(String.format(res,txtFieldA, txtFieldB,txtFieldC, txtFieldD));
 		
