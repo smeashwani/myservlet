@@ -1,12 +1,12 @@
 package com.training;
 
-import javax.servlet.annotation.WebListener;
-import javax.servlet.http.HttpSessionAttributeListener;
-import javax.servlet.http.HttpSessionBindingEvent;
+import jakarta.servlet.annotation.WebListener;
+import jakarta.servlet.http.HttpSessionAttributeListener;
+import jakarta.servlet.http.HttpSessionBindingEvent;
 
 @WebListener
-public class TestWebServletAnnotationListener implements HttpSessionAttributeListener {
-	public TestWebServletAnnotationListener() {
+public class MyWebListener implements HttpSessionAttributeListener {
+	public MyWebListener() {
 	}
 
 	@Override
