@@ -23,18 +23,19 @@ public class FirstServlet extends HttpServlet {
 		String txtFieldA = request.getParameter("textFieldA");
 		String txtFieldB = request.getParameter("textFieldB");
 		PrintWriter out = response.getWriter();
-		Cookie cookieA = new Cookie("txtFieldA", txtFieldA);
-		cookieA.setMaxAge(60*60*24*5);
-		Cookie cookieB = new Cookie("txtFieldB", txtFieldB);
-		response.addCookie(cookieA);
-		response.addCookie(cookieB);
 		String res ="""
 				<form action="SecondServlet">
-				Enter C: <input type="text" name="textFieldC" /></br>
-				<input type="submit">
+				Enter C: <input type="text" name="textFieldC" id="textFieldC" /></br>
+				<input type="button"  onclick="secondServlet()" value="submit" />
 				</form>
+				<script>
+            function secondServlet(){
+                c = document.getElementById("textFieldC").value;
+                location.href = "SecondServlet?textFieldA=%s&textFieldB=%s&textFieldC="+c;
+            }
+        </script>
 				""";
-		out.print(res);
+		out.print(res.formatted(txtFieldA,txtFieldB));
 		
 	}
 

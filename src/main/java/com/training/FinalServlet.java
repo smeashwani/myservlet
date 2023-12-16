@@ -21,26 +21,14 @@ public class FinalServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
-		String a = "";
-		String b = "";
-		String c = "";
-		Cookie[] cookies = request.getCookies();
-		for (Cookie cookie : cookies) {
-			if(cookie.getName().equals("txtFieldA")) {
-				a= cookie.getValue();
-			}
-			if(cookie.getName().equals("txtFieldB")) {
-				b= cookie.getValue();
-			}
-			if(cookie.getName().equals("txtFieldC")) {
-				c= cookie.getValue();
-			}
-		}
-		
+		String a = 	request.getParameter("textFieldA");
+		String b = request.getParameter("textFieldB");
+		String c = request.getParameter("textFieldC");
+		String d = request.getParameter("textFieldD") ;
 		out.print("A: " + a + "</br>");
 		out.print("B: " + b + "</br>");
 		out.print("C: " + c + "</br>");
-		out.print("D: " + request.getParameter("textFieldD") + "</br>");
+		out.print("D: " + d + "</br>");
 		
 	}
 

@@ -19,18 +19,24 @@ public class SecondServlet extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String txtFieldA = request.getParameter("textFieldA");
+		String txtFieldB = request.getParameter("textFieldB");
 		String txtFieldC = request.getParameter("textFieldC");
 		response.setContentType("text/html");
-		Cookie cookieC = new Cookie("txtFieldC", txtFieldC);
-		response.addCookie(cookieC);
 		String res  = """
 				<form action="FinalServlet">
-				Enter D: <input type="text" name="textFieldD" /></br>
-				<input type="submit">
+				Enter D: <input type="text" name="textFieldD" id="textFieldD" /></br>
+				<input type="button"  onclick="FinalServlet()" value="submit" />
 				</form>
+				<script>
+            function FinalServlet(){
+                d = document.getElementById("textFieldD").value;
+                location.href = "FinalServlet?textFieldA=%s&textFieldB=%s&textFieldC=%s&textFieldD="+d;
+            }
+        </script>
 				""";
 		PrintWriter out = response.getWriter();
-		out.print(res);
+		out.print(res.formatted(txtFieldA,txtFieldB,txtFieldC));
 		
 	}
 

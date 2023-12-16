@@ -1,9 +1,18 @@
 <html>
+    <head>
+        <script>
+            function firstServlet(){
+                a = document.getElementById("textFieldA").value;
+                b = document.getElementById("textFieldB").value;
+                location.href = "FirstServlet?textFieldA="+a + "&textFieldB="+b;
+            }
+        </script>
+    </head>
 <body>
 	<form action="FirstServlet">
-		Enter A: <input type="text" name="textFieldA" /></br>
-		Enter B: <input type="text" name="textFieldB" /></br>
-		<input type="submit">
+		Enter A: <input type="text" name="textFieldA" id="textFieldA"/></br>
+		Enter B: <input type="text" name="textFieldB" id="textFieldB"/></br>
+		<input type="button"  onclick="firstServlet()" value="submit" />
 	</form>
 </body>
 </html>
