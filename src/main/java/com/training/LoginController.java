@@ -50,7 +50,7 @@ public class LoginController extends HttpServlet {
 			extractContextInfo(out);
 
 		}else {
-			
+			  response.setContentType("text/html");
 			  RequestDispatcher rd = request.getRequestDispatcher("index.html");
 			  rd.include(request, response);
 			 
